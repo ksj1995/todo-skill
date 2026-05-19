@@ -22,7 +22,7 @@ Scans TODO comments in code, syncs with `PROJECT_TODOS.md`, reminds you of unfin
 **Via Claude Code Plugin Manager (Recommended)**
 
 ```
-/plugin install ksj/todo-skill
+/plugin install ksj1995/todo-skill
 ```
 
 **Manual - Project Level (current project only)**
@@ -98,7 +98,7 @@ Claude Code 项目待办管理插件。
 **通过 Claude Code 插件管理器（推荐）**
 
 ```
-/plugin install ksj/todo-skill
+/plugin install ksj1995/todo-skill
 ```
 
 **手动安装 - 项目级（仅当前项目可用）**
