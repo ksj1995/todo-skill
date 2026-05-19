@@ -1,0 +1,11 @@
+{
+  "name": "todo-skill",
+  "version": "1.0.0",
+  "description": "Project TODO management plugin for Claude Code. Scans code TODO comments, syncs with PROJECT_TODOS.md, reminds unfinished items, and locates code positions.",
+  "author": {
+    "name": "ksj"
+  },
+  "repository": "https://github.com/ksj/todo-skill",
+  "license": "MIT",
+  "keywords": ["todo", "task", "project-management", "claude-code"]
+}
