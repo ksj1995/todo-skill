@@ -1,5 +1,7 @@
 # todo-skill
 
+[![skills.sh](https://skills.sh/b/ksj1995/todo-skill)](https://skills.sh/ksj1995/todo-skill)
+
 [English](#english) | [中文](#中文)
 
 ---
