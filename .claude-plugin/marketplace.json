@@ -1,0 +1,11 @@
+{
+  "name": "todo-skill",
+  "displayName": "Todo Skill",
+  "plugins": [
+    {
+      "name": "todo-skill",
+      "description": "Project TODO management plugin for Claude Code",
+      "source": "."
+    }
+  ]
+}
