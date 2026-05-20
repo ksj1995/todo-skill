@@ -1,6 +1,12 @@
 ---
 name: todo-skill
-description: 项目待办管理 skill。扫描代码内 TODO 注释、同步 TODO.md、提醒未完成项、定位代码位置。用户说"看看待办/列出 TODO/补全 TODO/还有什么没做"或 /todo-skill 时触发。也在编辑代码检测到"预留/先这样/待定/mock/暂时/等接口/等后端/等前端/等设计/等确认/等评审/占位/占坑/待完善/待优化/待处理/待讨论/硬编码/临时方案/临时处理/暂缓/未完成/未实现/空实现/假数据/测试数据/开发中/建设中"等关键词时主动提议添加标记。
+description: |
+  项目待办管理 skill。当用户提及 TODO、待办、预留、mock、FIXME、未实现、等接口、
+  等后端、等前端、等设计、占位、临时方案、先这样、待定、暂时、等确认、等评审、
+  占坑、待完善、待优化、待处理、待讨论、硬编码、暂缓、空实现、假数据、测试数据、
+  开发中、建设中 等关键词时，或用户说"看看待办/列出 TODO/补全 TODO/还有什么没做/
+  扫一下 TODO"或使用 /todo-skill、/todo 命令时，**必须使用此 skill**。
+  扫描代码 TODO 注释、同步 PROJECT_TODOS.md、提醒未完成项、定位代码位置。
 ---
 
 # Project TODO 管理
@@ -12,7 +18,6 @@ description: 项目待办管理 skill。扫描代码内 TODO 注释、同步 TOD
 **显式触发**：
 - `/todo-skill` 或 `/todo`
 - "看看待办" / "列出 TODO" / "还有什么没做" / "补全 TODO" / "扫一下 TODO"
-- 会话开始时（首次响应前），主动扫一次并报告数量
 
 **隐式触发**（编辑代码时）：
 - 检测关键词：`先这样`、`预留`、`待定`、`暂时`、`mock`、`mockdata`、`TODO`、`FIXME`、`后续补充`、`后续处理`、`后续完善`、`后续优化`、`等接口`、`等后端`、`等前端`、`等设计`、`等确认`、`等评审`、`占位`、`占坑`、`待完善`、`待优化`、`待处理`、`待讨论`、`硬编码`、`临时方案`、`临时处理`、`暂缓`、`未完成`、`未实现`、`空实现`、`假数据`、`测试数据`、`开发中`、`建设中`
@@ -32,9 +37,9 @@ grep -rn "TODO(预留" src/ --include="*.vue" --include="*.js" --include="*.ts" 
 - output_mode: `content`
 - -n: true
 
-### 2. 读取 `TODO.md`
+### 2. 读取 `PROJECT_TODOS.md`
 
-文件路径：项目根 `TODO.md`
+文件路径：项目根 `PROJECT_TODOS.md`
 
 ### 3. 比对差异
 
@@ -84,7 +89,7 @@ grep -rn "TODO(预留" src/ --include="*.vue" --include="*.js" --include="*.ts" 
 - Vue template 内用 `<!-- TODO(...) -->`
 - CSS 内用 `/* TODO(...) */`
 
-**Step 4: 写入 `TODO.md`**
+**Step 4: 写入 `PROJECT_TODOS.md`**
 
 定位对应类型的表格，追加一行：
 
@@ -97,22 +102,21 @@ grep -rn "TODO(预留" src/ --include="*.vue" --include="*.js" --include="*.ts" 
 用户说"完成了 TODO #xxx" 或编辑后注释被删时：
 
 1. 确认代码注释已删（grep 验证）
-2. 从 `TODO.md` 删除对应行
+2. 从 `PROJECT_TODOS.md` 删除对应行
 3. （可选）追加一行到底部"已完成归档"区
 4. 提示用户提交：`git add -p` 检查改动
 
 ## 关键约束
 
-- **禁止**修改 `src/commons/` 内文件添加 TODO（框架只读）
-- **禁止**在 commit message 内加 TODO 标记（commit 应描述已完成的事）
-- 跨文件批量操作前**必须**列出影响范围请用户确认
+- 不在 commit message 内加 TODO 标记（commit 描述已完成的事）
+- 跨文件批量操作前先列出影响范围请用户确认，避免意外修改
 - 编号一旦分配不复用，删除即作废
 
 ## 报告"无待办"场景
 
 ```
 ✅ 项目待办：清空
-TODO.md 与代码注释均无未完成项）
+PROJECT_TODOS.md 与代码注释均无未完成项）
 ```
 
 ## 与 Claude Code 内置 TaskCreate 区别
