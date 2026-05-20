@@ -1,11 +1,16 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "todo-skill",
-  "displayName": "Todo Skill",
+  "description": "Project TODO management plugin for Claude Code",
+  "owner": {
+    "name": "ksj"
+  },
   "plugins": [
     {
       "name": "todo-skill",
-      "description": "Project TODO management plugin for Claude Code",
-      "source": "."
+      "description": "Project TODO management plugin for Claude Code. Scans code TODO comments, syncs with PROJECT_TODOS.md, reminds unfinished items, and locates code positions.",
+      "source": "./",
+      "category": "productivity"
     }
   ]
 }
