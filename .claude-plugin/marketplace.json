@@ -3,13 +3,13 @@
   "name": "todo-skill",
   "description": "Project TODO management plugin for Claude Code",
   "owner": {
-    "name": "ksj"
+    "name": "ksj1995"
   },
   "plugins": [
     {
       "name": "todo-skill",
       "description": "Project TODO management plugin for Claude Code. Scans code TODO comments, syncs with PROJECT_TODOS.md, reminds unfinished items, and locates code positions.",
-      "source": "./",
+      "source": "skills/todo-skill",
       "category": "productivity"
     }
   ]
